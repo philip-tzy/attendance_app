@@ -108,15 +108,86 @@ if (isset($_GET['export']) && $_GET['export'] == 'pdf') {
         .main-content {
             padding: 20px;
         }
+        @media (max-width: 991.98px) {
+            .sidebar {
+                display: none !important;
+            }
+            .main-content {
+                padding: 10px;
+            }
+            .col-md-9.col-lg-10.main-content {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .mobile-nav-toggle {
+                display: block !important;
+            }
+        }
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #343a40;
+            margin: 10px 0 10px 10px;
+        }
+        .offcanvas {
+            background: #343a40;
+            color: white;
+        }
+        .offcanvas .nav-link {
+            color: rgba(255,255,255,.8);
+        }
+        .offcanvas .nav-link:hover {
+            color: white;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
     </style>
 </head>
 <body>
+    <!-- Hamburger Button for Mobile -->
+    <button class="mobile-nav-toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+        <i class="fas fa-bars"></i>
+    </button>
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 px-0 sidebar">
+            <!-- Sidebar for Desktop -->
+            <div class="col-md-3 col-lg-2 px-0 sidebar d-none d-lg-block">
                 <div class="p-3">
                     <h4 class="text-center mb-4">Attendance System</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php">
+                                <i class="fas fa-home me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="students.php">
+                                <i class="fas fa-user-graduate me-2"></i> Students
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="courses.php">
+                                <i class="fas fa-book me-2"></i> Courses
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="attendance.php">
+                                <i class="fas fa-clipboard-check me-2"></i> Attendance
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Offcanvas Sidebar for Mobile -->
+            <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+                <div class="offcanvas-header">
+                    <h4 class="offcanvas-title" id="offcanvasSidebarLabel">Attendance System</h4>
+                    <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php">
